@@ -22,7 +22,7 @@ in ```pyppeteer```
 - this replacement of default ```chromium``` with latest ```google-chrome``` as above also solves the problem of 
   ```timeout``` when running dockerised code using ```pyppeteer```
   
-- Airflow docker container used in this ETL comes with the historical files download in ```~/Downaloads```-- however persisting this dump in a docker image is
+- Airflow docker container used in this ETL comes with the historical files download in ```~/Downloads```-- however persisting this dump in a docker image is
 not a very good idea, I would not do it in PROD. I would prefer either to use NFS (which does not come w/o some issues regarding
 providing users from within dockers to access NFS mounts) or to use redis (in its own container, restricted 
 to access only from withing ETL's own docker network); I started implementation 
