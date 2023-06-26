@@ -1,0 +1,8 @@
+/data/*
+~lock*
+.idea
+build
+*.egg-info
+dist
+__pycache__
+*.pyc
