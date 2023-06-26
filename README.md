@@ -2,7 +2,7 @@
 
 
 ### NOTES and CRITICAL POINTS: 
-- the default chrome coming along with ```pyppeteer ``` does not correctly support file downloads in 
+- the default chromium coming along with ```pyppeteer ``` does not correctly support file downloads in 
 ```headless``` now, ao I need to install newest ```google-chrome``` version in my docker. Note 
 ```buildoutcfg
     browser = await launch(
@@ -30,9 +30,9 @@ of the second approach but cancelled it as ```redis``` may not be in your curren
 
 - Source code for the project is installed inside Airflow docker container, also can be accessed via
 ```buildoutcfg
-git clone -e ...
+git clone https://github.com/VDV80/dvol_etl.git
 ```
-- [Dash server with visualisation](localhost:8080) is not in Airflow DAG, it is a standalone docker, also included into docker-compose 
+- [Dash server with visualisation at localhost:8081](localhost:8081) is not in Airflow DAG, it is a standalone docker, also included into docker-compose 
   (at the very least it needs to be on the same docker network as postgress with loaded data), but designwise
   that may not be a good idea -- best probably to spawn off all front end/UI into a separate project and a separate docker network.
 
