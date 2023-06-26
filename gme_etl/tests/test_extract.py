@@ -5,8 +5,8 @@ from unittest import TestCase
 
 import pandas as pd
 
-sys.path.append("../..")
-sys.path.append("..")
+sys.path.append("/home/airflow/dvol_etl/gme_etl/")
+sys.path.append("/home/airflow/dvol_etl/")
 from etl_helpers import utils
 import config
 

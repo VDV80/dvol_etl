@@ -10,10 +10,10 @@ from typing import List, Tuple, Dict
 import pandas as pd
 import redis
 from pyppeteer import launch
-sys.path.append("..")
 import config
 
-sys.path.append(".")
+sys.path.append("/home/airflow/dvol_etl/gme_etl/")
+sys.path.append("/home/airflow/dvol_etl/")
 from etl_helpers import utils
 
 logger = logging.getLogger()

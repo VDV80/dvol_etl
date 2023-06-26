@@ -8,7 +8,8 @@ from typing import List
 
 import pandas as pd
 
-sys.path.append(".")
+sys.path.append("/home/airflow/dvol_etl/gme_etl/")
+sys.path.append("/home/airflow/dvol_etl/")
 import config
 
 logger = logging.getLogger()
