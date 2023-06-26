@@ -14,5 +14,4 @@ setup(
     python_requires='>3.9',
     packages=['gme_etl'],  # same as name
     install_requires=['numpy', 'pandas', 'pyppeteer', 'redis', 'plotly', 'dash', 'sqlalchemy==1.4.48', 'psycopg2-binary'],
-    extras_require={'formatting': ['black', 'pylint']},  # external packages as dependencies
 )
