@@ -13,6 +13,6 @@ setup(
     author_email='dveselov.phd@gmail.com',
     python_requires='>3.9',
     packages=['gme_etl'],  # same as name
-    install_requires=['pandas', 'pyppeteer', 'redis', 'plotly', 'dash', 'sqlalchemy==1.4.48', 'psycopg2-binary'],
+    install_requires=['pandas', 'pyppeteer', 'redis', 'plotly', 'dash', 'sqlalchemy==1.4.48'],
     extras_require={'formatting': ['black', 'pylint']},  # external packages as dependencies
 )
