@@ -17,7 +17,7 @@ note the folwing code snippet:
         ],
     )
 ```
-I am using ```'--headless=new'``` as one of ```args```. This issue with file downloads is a known problem
+I am using ```'--headless=new'``` as one of ```args```. This issue with file downloads in headless mode is a known problem
 in ```pyppeteer```
 
 - this replacement of default ```chromium``` with latest ```google-chrome``` as above also solves the problem of 
@@ -30,7 +30,7 @@ in ```pyppeteer```
 ```buildoutcfg
 git clone https://github.com/VDV80/dvol_etl.git
 ```
-- The [Dash server with visualisation at localhost:8081](localhost:8081) sshould not be included in the Airflow container. It should be a standalone Docker container included in the Docker Compose configuration, as it needs to be on the same Docker network as Postgres with the loaded data. The current setup is just for simplifying the build process.
+- The [Dash server with visualisation at localhost:8081](localhost:8081) should not be included in the Airflow container. It should be a standalone Docker container included in the Docker Compose configuration, as it needs to be on the same Docker network as Postgres with the loaded data. The current setup is just for simplifying the build process.
 
 # Installation
 The source code is currently available on GitHub, so you can install it using the following commands:
