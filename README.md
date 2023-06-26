@@ -32,16 +32,19 @@ of the second approach but cancelled it as ```redis``` may not be in your curren
 ```buildoutcfg
 git clone https://github.com/VDV80/dvol_etl.git
 ```
-- [Dash server with visualisation at localhost:8081](localhost:8081) is not in Airflow DAG, it is a standalone docker, also included into docker-compose 
-  (at the very least it needs to be on the same docker network as postgress with loaded data), but designwise
-  that may not be a good idea -- best probably to spawn off all front end/UI into a separate project and a separate docker network.
+- [Dash server with visualisation at localhost:8081](localhost:8081) should totally not be Airflow container, but in a 
+  standalone docker also included into docker-compose 
+  (since it needs to be on the same docker network as postgress with loaded data).
+  This current set up is just to simplify the build a bit.
 
 # Installation
 The source ia currently available on github, so can be installed 
 ```buildoutcfg
-pip install -U -e <url>
+git clone https://github.com/VDV80/dvol_etl.git
+cd dvol_etl
+python setup.py install
 ```
-(editable mode so convenience for now) but it is already in the airflow docker image specified in the [Dockerfile](./gme_etl/Dockerfile).
+but it is already in the airflow docker image specified in the [Dockerfile](./gme_etl/Dockerfile).
 NOTE that configs availabe for non-contenerised installation would need to be changed, as well some infastructure around it 
 (eg historical data dump needs to be aquired, postrgres launched etc)
 
