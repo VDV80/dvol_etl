@@ -1,7 +1,7 @@
 # ETL pipelines
 
 
-###NOTES and CRITICAL POINTS: 
+### NOTES and CRITICAL POINTS: 
 - the default chrome coming along with ```pyppeteer ``` does not correctly support file downloads in 
 ```headless``` now, ao I need to install newest ```google-chrome``` version in my docker. Note 
 ```buildoutcfg
@@ -47,7 +47,7 @@ NOTE that configs availabe for non-contenerised installation would need to be ch
 
 
 
-#Design and Aritecture
+# Design and Aritecture
 
 Each ETL pipeline (module in ```data_collector``` project) is supposed to be deployed in its own 
 [docker container](./gme_etl/Dockerfile) build from [Ariflow's own docker container](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
@@ -59,12 +59,12 @@ container, but as I am delivering the solution in most isolated manner, the Airf
 no easy way toprovide it access either to host's docker demon, or to raise one in airflow own docker for 
 ```airflow``` user to run the containers for ETLs.
 
-#Tests
+# Tests
 Only simple unit test for now -- as in [here](./tests).
 
 Ideally should also have integration, performance and regression/backward compatibility test.
 
-#Formatting and PEP8, type checks
+# Formatting and PEP8, type checks
 Please use [Black](https://pypi.org/project/black/) to ensure PEP* compliance.
 
 Please use and [Pylint](https://pypi.org/project/pylint/) for type checks.
