@@ -30,7 +30,7 @@ COPY ./mgp/* /home/airflow/Downloads
 
 COPY ./gme_etl/dags/* /opt/airflow/dags
 
-# this should prob bea ealier in the build
+# this should prob be ealier in the build
 RUN pip install pandas pyppeteer redis plotly dash sqlalchemy==1.4.48 psycopg2-binary
 
 

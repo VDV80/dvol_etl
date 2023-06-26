@@ -32,7 +32,7 @@ of the second approach but cancelled it as ```redis``` may not be in your curren
 ```buildoutcfg
 git clone https://github.com/VDV80/dvol_etl.git
 ```
-- [Dash server with visualisation at localhost:8081](localhost:8081) should totally not be Airflow container, but in a 
+- [Dash server with visualisation at localhost:8081](localhost:8081) should totally not be in Airflow container, but in a 
   standalone docker also included into docker-compose 
   (since it needs to be on the same docker network as postgress with loaded data).
   This current set up is just to simplify the build a bit.
@@ -42,28 +42,34 @@ The source ia currently available on github, so can be installed
 ```buildoutcfg
 git clone https://github.com/VDV80/dvol_etl.git
 cd dvol_etl
-python setup.py install
+python setup.py install # note the installation fails
 ```
-but it is already in the airflow docker image specified in the [Dockerfile](./gme_etl/Dockerfile).
-NOTE that configs availabe for non-contenerised installation would need to be changed, as well some infastructure around it 
-(eg historical data dump needs to be aquired, postrgres launched etc)
+but it is already in the airflow docker image specified in the [Dockerfile](./Dockerfile).
+NOTE1 that [config.py](./gme_etl/config.py) for non-containerised installation would need to be changed, as well some infrastructure around it 
+(eg historical data dump needs to be aquired, postrgres launched etc).
+NOTE2 that ```python setup.py install``` does not work because of some versions(?) conflicts, hence silly 
+```buildoutcfg
+RUN pip install pandas pyppeteer redis plotly dash sqlalchemy==1.4.48 psycopg2-binary
+```
+which should not be there, als ```sys.path``` had to be appended in the code in imports section, which is really a bad parctice, but at least safe for
+dockerised code.
 
 
 
 # Design and Aritecture
 
-Each ETL pipeline (module in ```data_collector``` project) is supposed to be deployed in its own 
-[docker container](./gme_etl/Dockerfile) build from [Ariflow's own docker container](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+Each ETL pipeline (module in ```data_collector``` project) is deployed in its own 
+[docker container](./Dockerfile) build from [Ariflow's own docker container](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
 -- note that the latter one is a simplified version for demo purposes mostly. 
-This would not be ideal solution for PROD (at the very least that would imply running multiple instances of Ariflow in their own containers), 
+This would not be ideal solution for PROD (at the very least that would imply running multiple instances of Airflow in their own containers), 
 
-I would prefer the Airflow to be run on the host as a single non-dockerise instance and run each individual ETL in its individual 
+I would prefer the Airflow to be run on the host as a single non-dockerised instance and run each individual ETL in its individual 
 container, but as I am delivering the solution in most isolated manner, the Airflow itself is running on docker, and to my knowledge there is 
 no easy way toprovide it access either to host's docker demon, or to raise one in airflow own docker for 
 ```airflow``` user to run the containers for ETLs.
 
 # Tests
-Only simple unit test for now -- as in [here](./tests).
+Only simple unit test for now -- as in [here](./gme_etl/tests).
 
 Ideally should also have integration, performance and regression/backward compatibility test.
 
@@ -71,3 +77,6 @@ Ideally should also have integration, performance and regression/backward compat
 Please use [Black](https://pypi.org/project/black/) to ensure PEP* compliance.
 
 Please use and [Pylint](https://pypi.org/project/pylint/) for type checks.
+
+NOTE --removes extras in setup.py due when attempting to fix the conflicts preventing normal setup (now have to butcher the code by appending 
+```sys.path``` which at least is safe for docker container)
