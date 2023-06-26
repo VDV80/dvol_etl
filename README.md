@@ -56,7 +56,7 @@ dockerised code.
 
 
 
-# Design and Aritecture
+# Design and Architecture
 
 Each ETL pipeline (module in ```data_collector``` project) is deployed in its own 
 [docker container](./Dockerfile) build from [Ariflow's own docker container](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
